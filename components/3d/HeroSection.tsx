@@ -201,14 +201,14 @@ function StormScene() {
       <fog attach="fog" args={['#050816', 2.8, 18]} />
 
       <ambientLight intensity={0.18} />
-      <directionalLight position={[2.2, 3.4, 2.8]} intensity={0.6} color="#88a0ff" castShadow />
+      <directionalLight position={[2.2, 3.4, 2.8]} intensity={0.6} color="#88a0ff" />
       <pointLight ref={flashLightRef} position={[0, 2.8, 0.7]} distance={12} color="#e6f9ff" intensity={0.5} />
       <pointLight position={[0, 0.2, 1.8]} distance={6} color="#00d4ff" intensity={0.6} />
 
       <group ref={skyGroupRef}>
-        <Cloud position={[0, 2.4, -2]} speed={0.18} opacity={0.44} color="#171a2d" segments={28} bounds={[7, 2.2, 4]} volume={8} />
-        <Cloud position={[-1.6, 1.9, -1]} speed={0.15} opacity={0.4} color="#1f2238" segments={24} bounds={[5, 1.6, 3.2]} volume={6} />
-        <Cloud position={[2.2, 2.15, -0.6]} speed={0.22} opacity={0.36} color="#20233c" segments={26} bounds={[5.5, 1.9, 3.2]} volume={7} />
+        <Cloud position={[0, 2.4, -2]} speed={0.18} opacity={0.44} color="#171a2d" segments={16} bounds={[7, 2.2, 4]} volume={6} />
+        <Cloud position={[-1.6, 1.9, -1]} speed={0.15} opacity={0.4} color="#1f2238" segments={14} bounds={[5, 1.6, 3.2]} volume={5} />
+        <Cloud position={[2.2, 2.15, -0.6]} speed={0.22} opacity={0.36} color="#20233c" segments={14} bounds={[5.5, 1.9, 3.2]} volume={5} />
       </group>
 
       <LightningBolt seed={strike.seed} flashRef={flashRef} />
@@ -219,7 +219,7 @@ function StormScene() {
         <planeGeometry args={[12, 12]} />
         <MeshReflectorMaterial
           blur={[380, 120]}
-          resolution={1024}
+          resolution={512}
           mixBlur={1.2}
           mixStrength={2.1}
           roughness={0.8}
@@ -297,9 +297,8 @@ export default function HeroSection() {
         <div className="glass h-[460px] overflow-hidden rounded-3xl md:h-[580px]">
           <Canvas
             camera={{ position: [0, 0.85, 5.2], fov: 42 }}
-            shadows
-            dpr={[1, 2]}
-            gl={{ antialias: true, powerPreference: 'high-performance', toneMapping: THREE.ACESFilmicToneMapping }}
+            dpr={[1, 1.35]}
+            gl={{ antialias: false, powerPreference: 'high-performance', toneMapping: THREE.ACESFilmicToneMapping }}
           >
             <StormScene />
           </Canvas>
@@ -308,3 +307,4 @@ export default function HeroSection() {
     </section>
   );
 }
+

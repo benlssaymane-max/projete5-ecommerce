@@ -5,7 +5,6 @@ import Navbar from '@/components/ui/Navbar';
 import PageTransition from '@/components/ui/PageTransition';
 import ShaderBackdrop from '@/components/ui/ShaderBackdrop';
 import CustomCursor from '@/components/ui/CustomCursor';
-import BrandPreloader from '@/components/ui/BrandPreloader';
 
 const sora = Sora({ subsets: ['latin'], variable: '--font-sora' });
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space' });
@@ -22,7 +21,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ShaderBackdrop />
         <div className="fixed inset-0 -z-20 bg-[radial-gradient(circle_at_20%_20%,rgba(0,212,255,0.22),transparent_40%),radial-gradient(circle_at_80%_0%,rgba(124,58,237,0.18),transparent_38%),linear-gradient(180deg,#050816,#040612)]" />
         <div className="fixed inset-0 -z-20 bg-noise-grid bg-[length:24px_24px] opacity-20" />
-        <BrandPreloader />
         <CustomCursor />
         <Navbar />
         <PageTransition>{children}</PageTransition>
@@ -30,3 +28,4 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
+
