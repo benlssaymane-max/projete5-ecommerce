@@ -238,6 +238,13 @@ function StormScene() {
 }
 
 export default function HeroSection() {
+  const [showScene, setShowScene] = useState(false);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setShowScene(true), 1200);
+    return () => window.clearTimeout(timer);
+  }, []);
+
   const playUiTone = () => {
     const AudioCtx = window.AudioContext || (window as typeof window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
     if (!AudioCtx) return;
@@ -295,13 +302,17 @@ export default function HeroSection() {
         </motion.div>
 
         <div className="glass h-[460px] overflow-hidden rounded-3xl md:h-[580px]">
-          <Canvas
-            camera={{ position: [0, 0.85, 5.2], fov: 42 }}
-            dpr={[1, 1.35]}
-            gl={{ antialias: false, powerPreference: 'high-performance', toneMapping: THREE.ACESFilmicToneMapping }}
-          >
-            <StormScene />
-          </Canvas>
+          {showScene ? (
+            <Canvas
+              camera={{ position: [0, 0.85, 5.2], fov: 42 }}
+              dpr={[1, 1.35]}
+              gl={{ antialias: false, powerPreference: 'high-performance', toneMapping: THREE.ACESFilmicToneMapping }}
+            >
+              <StormScene />
+            </Canvas>
+          ) : (
+            <div className="h-full w-full bg-[radial-gradient(circle_at_30%_20%,rgba(0,212,255,0.2),transparent_45%),linear-gradient(180deg,#060916,#040612)]" />
+          )}
         </div>
       </div>
     </section>
